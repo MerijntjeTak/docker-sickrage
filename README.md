@@ -2,19 +2,26 @@
 
 This is a Dockerfile to set up "SickRage" - (https://sickrage.github.io/)
 
-Build from docker file
+## Quick start
+docker run --restart=always -d -h *your_host_name* -v /*your_config_location*:/config  -v /*your_videos_location*:/data -p 8081:8081 sickrage
 
+## Development
+Build from docker file
 ```
 git clone git@github.com:timhaak/docker-sickrage.git
 cd docker-sickrage
 docker build -t sickrage .
 ```
 
-docker run --restart=always -d -h *your_host_name* -v /*your_config_location*:/config  -v /*your_videos_location*:/data -p 8081:8081 sickrage
-
-Optional environment variables (use `-e` with `docker run`):
+## Optional features
+### Run as specific user
+Specify the environment variables PUID and GUID (use `-e` with `docker run`), eg:
 ```
-PUID    - User ID to run as (default: 0)
-GUID    - Group ID to run as (default: 0)
+docker run --restart=always -d -h *your_host_name* -v /*your_config_location*:/config  -v /*your_videos_location*:/data -e "PUID=2001" -e "GUID=2001" -p 8081:8081 sickrage
 ```
 
+### Set time zone
+Mount the `/etc/localtime` file into the container, eg:
+```
+docker run --restart=always -d -h *your_host_name* -v /*your_config_location*:/config  -v /*your_videos_location*:/data -v /etc/localtime:/etc/localtime:ro -p 8081:8081 sickrage
+```
