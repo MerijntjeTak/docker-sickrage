@@ -12,3 +12,9 @@ docker build -t sickrage .
 
 docker run --restart=always -d -h *your_host_name* -v /*your_config_location*:/config  -v /*your_videos_location*:/data -p 8081:8081 sickrage
 
+Optional environment variables (use `-e` with `docker run`):
+```
+PUID    - User ID to run as (default: 0)
+GUID    - Group ID to run as (default: 0)
+```
+
