@@ -8,7 +8,7 @@ docker run --restart=always -d -h *your_host_name* -v /*your_config_location*:/c
 ## Development
 Build from docker file
 ```
-git clone git@github.com:timhaak/docker-sickrage.git
+git clone git@github.com:merijntjetak/docker-sickrage.git
 cd docker-sickrage
 docker build -t sickrage .
 ```
@@ -25,3 +25,5 @@ Mount the `/etc/localtime` file into the container, eg:
 ```
 docker run --restart=always -d -h *your_host_name* -v /*your_config_location*:/config  -v /*your_videos_location*:/data -v /etc/localtime:/etc/localtime:ro -p 8081:8081 sickrage
 ```
+
+Based on Tim Haak's implementation (https://github.com/timhaak/docker-sickrage)
